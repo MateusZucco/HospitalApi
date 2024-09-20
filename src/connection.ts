@@ -3,10 +3,6 @@ const mysql = require('mysql2/promise');
 export class Connection {
   private connectionStatus: any;
 
-  constructor() {
-    console.log('Constructor called');
-  }
-
   async connect() {
     if (this.connectionStatus && this.connectionStatus.state !== 'disconnected')
       return this.connectionStatus;

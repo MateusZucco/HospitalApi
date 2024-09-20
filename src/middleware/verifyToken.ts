@@ -17,19 +17,25 @@ export function verifyToken(req: Request, res: Response, next: NextFunction) {
       token,
       process.env.JWT_SECRET || '12345abcde!@#$%',
       async function (err: any, decode: any) {
-        if (err || !decode) {
-          throw 'Token expired';
+        try {
+          if (err || !decode) {
+            throw 'Token expired';
+          }
+
+          const user = await userModel.getById(decode.userId);
+
+          if (!user) {
+            throw 'Invalid token';
+          }
+
+          req.user = user;
+
+          next();
+        } catch (err) {
+          res.status(401).send({
+            message: err
+          });
         }
-
-        const user = await userModel.getById(decode.userId);
-
-        if (!user) {
-          throw 'Invalid token';
-        }
-
-        req.user = user;
-
-        next();
       }
     );
   } else {
