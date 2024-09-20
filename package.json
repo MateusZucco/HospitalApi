@@ -1,0 +1,28 @@
+{
+  "name": "hospital_api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "ZuccoDev <zucco.developer@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --build",
+    "dev": "nodemon",
+    "start": "nodemon --watch 'dist/**' ",
+    "clean": "tsc --build --clean"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^22.5.5",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.3"
+  }
+}
